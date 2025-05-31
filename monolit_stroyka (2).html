@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МонолитПроект - Монолитное строительство</title>
+    <style>
+        /* Общие стили */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        h1, h2, h3, h4 {
+            margin: 0 0 20px 0;
+        }
+        p {
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            font-size: 16px;
+        }
+        .btn-accent {
+            background-color: #E31837;
+            color: #FFFFFF;
+        }
+        .btn-accent:hover {
+            opacity: 0.8;
+        }
+        .section-light {
+            background-color: #F7F7F7;
+        }
+        .section-white {
+            background-color: #FFFFFF;
+        }
+        /* Шапка и Hero */
+        
+        #hero {
+            position: relative;
+            background: url('https://picsum.photos/id/1012/1920/1080') center/cover no-repeat;
+            color: #FFFFFF;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        #hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        #hero .header-contacts {
+            margin-top: 20px;
+        }
+        #hero .header-contacts a {
+            margin: 0 10px;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        #hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        #hero .header-contacts {
+            margin-top: 20px;
+        }
+        #hero .header-contacts a {
+            margin: 0 10px;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+        /* Навигация */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.9);
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #E31837;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            font-size: 16px;
+            color: #2E2E2E;
+        }
+        /* О компании */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .stat-item {
+            flex: 1 1 200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .stat-item img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+        .stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .stat-desc {
+            font-size: 16px;
+        }
+        /* Сервисы */
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .service-card {
+            flex: 1 1 250px;
+            background-color: #FFFFFF;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .service-card img {
+            width: 60px;
+            margin-bottom: 15px;
+        }
+        /* Преимущества */
+        .advantages-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .adv-item {
+            flex: 1 1 250px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .adv-item img {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+        /* Этапы */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .step {
+            flex: 1 1 30%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: block;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        /* Портфолио */
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .portfolio-item {
+            flex: 1 1 30%;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .portfolio-item img {
+            width: 100%;
+            display: block;
+        }
+        .portfolio-info {
+            padding: 15px;
+            background-color: #FFFFFF;
+        }
+        /* Отзывы */
+        .testimonials-slider {
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial {
+            background-color: #FFFFFF;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* Вакансии */
+        .vacancy-list, .vacancy-conditions {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .vacancy-list li, .vacancy-conditions li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .vacancy-list li::before, .vacancy-conditions li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #E31837;
+        }
+        .form-vacancy .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .form-vacancy input, .form-vacancy select, .form-vacancy textarea {
+            flex: 1 1 45%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+        }
+        .form-vacancy label {
+            flex: 1 1 100%;
+            margin: 5px;
+        }
+        .form-vacancy button {
+            margin: 10px 5px;
+        }
+        /* Контакты */
+        .contacts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .contact-item {
+            flex: 1 1 45%;
+            margin-bottom: 30px;
+        }
+        .contact-item h4 {
+            margin-bottom: 10px;
+        }
+        .contact-item a {
+            display: block;
+            margin-top: 5px;
+            color: #E31837;
+        }
+        .contact-map iframe {
+            border: none;
+        }
+        /* Footer */
+        .site-footer {
+            background-color: #2E2E2E;
+            color: #FFFFFF;
+            padding: 20px 0;
+        }
+        .site-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-footer .footer-nav a {
+            margin-right: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        .social-icons a {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        /* Адаптив */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            nav .logo {
+                margin: 0 auto;
+            }
+            .stats, .services-grid, .advantages-grid, .process-steps, .portfolio-grid, .contacts-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stat-item, .service-card, .adv-item, .step, .portfolio-item, .contact-item {
+                flex: 1 1 100%;
+            }
+            #hero h1 {
+                font-size: 32px;
+            }
+            #hero p {
+                font-size: 16px;
+            }
+            .form-vacancy .form-row {
+                flex-direction: column;
+            }
+            .form-vacancy input, .form-vacancy select, .form-vacancy textarea {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">МонолитПроект</div>
+        <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#testimonials">Отзывы</a></li>
+            <li><a href="#vacancies">Вакансии</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="hero">
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Монолитное строительство «под ключ» в Москве и Московской области</h1>
+        <p>Возводим бетонные фундаменты, перекрытия и стены с гарантией качества и строгим соблюдением сроков.</p>
+        <a href="#contact" class="btn btn-accent">Получить смету</a>
+        <div class="header-contacts">
+            <a href="tel:+79297772204">+7 (929) 777-22-04</a>
+            <a href="https://wa.me/79297772204" target="_blank">WhatsApp</a>
+            <a href="https://t.me/AKE_19" target="_blank">Telegram</a>
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="section-light">
+    <div class="container">
+        <h2>О компании</h2>
+        <p>Наша компания «МонолитПроект» осуществляет полный цикл монолитного строительства в Москве и Московской области с 2010 года. За 15 лет реализовано свыше 120 проектов — жилых и коммерческих зданий.</p>
+        <div class="stats">
+            <div class="stat-item">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="10,45 25,5 40,45" fill="#999"/>
+  <rect x="10" y="25" width="30" height="20" fill="#bbb"/>
+</svg>
+                <span class="stat-number">15 лет</span>
+                <p class="stat-desc">на рынке</p>
+            </div>
+            <div class="stat-item">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="25,5 5,25 45,25" fill="#ccc"/>
+  <rect x="15" y="25" width="20" height="20" fill="#888"/>
+</svg>
+                <span class="stat-number">120+</span>
+                <p class="stat-desc">сданных объектов</p>
+            </div>
+            <div class="stat-item">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="20" width="40" height="25" fill="#666"/>
+  <rect x="8" y="25" width="6" height="10" fill="#333"/>
+  <rect x="18" y="25" width="6" height="10" fill="#333"/>
+  <rect x="28" y="25" width="6" height="10" fill="#333"/>
+</svg>
+                <span class="stat-number">Свой</span>
+                <p class="stat-desc">бетоноузел</p>
+            </div>
+            <div class="stat-item">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="15" r="10" fill="#FFD700"/>
+  <rect x="15" y="25" width="20" height="20" fill="#FAFAFA" stroke="#000"/>
+</svg>
+                <span class="stat-number">СРО № 123456</span>
+                <p class="stat-desc">ISO 9001</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section-white">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        <p>Полный цикл работ от проектирования до сдачи:</p>
+        <div class="services-grid">
+            <div class="service-card">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="10,45 25,5 40,45" fill="#999"/>
+  <rect x="10" y="25" width="30" height="20" fill="#bbb"/>
+</svg>
+                <h3>Монолитные фундаменты</h3>
+                <p>Плиты и ленточные конструкции с учётом особенностей грунта Центрального региона.</p>
+            </div>
+            <div class="service-card">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="10" width="20" height="40" fill="#666"/>
+  <line x1="30" y1="10" x2="30" y2="50" stroke="#000" stroke-width="2"/>
+</svg>
+                <h3>Монолитные перекрытия и стены</h3>
+                <p>Современные опалубочные системы, армирование по европейским нормам, заливка бетона.</p>
+            </div>
+            <div class="service-card">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <rect x="25" y="5" width="10" height="40" fill="#777"/>
+  <circle cx="30" cy="50" r="10" fill="#999"/>
+</svg>
+                <h3>Анкерные пояса и армопояса</h3>
+                <p>Собственное производство армопоясов, закладные элементы, точное армирование.</p>
+            </div>
+            <div class="service-card">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="40" width="40" height="15" fill="#ccc"/>
+  <rect x="20" y="20" width="20" height="20" fill="#eee"/>
+</svg>
+                <h3>Черновая отделка</h3>
+                <p>Гидроизоляция подвала, штукатурка, стяжки и устройство инженерных систем</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="advantages" class="section-light">
+    <div class="container">
+        <h2>Почему выбирают нас</h2>
+        <div class="advantages-grid">
+            <div class="adv-item">
+                
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="10,45 25,5 40,45" fill="#999"/>
+  <rect x="10" y="25" width="30" height="20" fill="#bbb"/>
+</svg>
+                <h3>Свой бетоноузел</h3>
+                <p>Гарантированная марка М300–М350, доставка 24/7 без простоев.</p>
+            </div>
+            <div class="adv-item">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="20" r="10" fill="#888"/>
+  <rect x="20" y="30" width="20" height="25" fill="#555"/>
+</svg>
+                <h3>Собственная бригада</h3>
+                <p>250+ квалифицированных монтажников, плиточников, бетонщиков.</p>
+            </div>
+            <div class="adv-item">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="40" height="40" fill="#ddd"/>
+  <text x="30" y="40" font-size="18" text-anchor="middle" fill="#333">BIM</text>
+</svg>
+                <h3>3D-проектирование (BIM)</h3>
+                <p>Точная модель каждого перекрытия и стены, минимизация брака.</p>
+            </div>
+            <div class="adv-item">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="25" fill="#eee" stroke="#333" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="10" stroke="#333" stroke-width="2"/>
+  <line x1="30" y1="30" x2="45" y2="30" stroke="#333" stroke-width="2"/>
+</svg>
+                <h3>Соблюдение сроков</h3>
+                <p>Фиксированные графики работ, штрафы за срыв сроков (по договору).</p>
+            </div>
+            <div class="adv-item">
+                
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,5 55,20 55,45 30,60 5,45 5,20" fill="#FFD700"/>
+</svg>
+                <h3>Гарантия качества</h3>
+                <p>Гарантия на монолитные конструкции до 5 лет, выданная по акту приёма.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="process" class="section-white">
+    <div class="container">
+        <h2>Этапы работ</h2>
+        <div class="process-steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h4>Подготовительный этап</h4>
+                <p>Геодезия, вынос осей, гидрогеология, согласование проектной документации.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <h4>Фундамент</h4>
+                <p>Разметка, земляные работы, опалубка, армирование, заливка бетона М300.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <h4>Монолитные стены и перекрытия</h4>
+                <p>Установка опалубки, армирование, заливка перекрытий по технологии «холодный шов».</p>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <h4>Анкерные пояса</h4>
+                <p>Установка заливных анкеров, монтаж армопоясов согласно проекту.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <h4>Черновая отделка</h4>
+                <p>Гидроизоляция, стяжки, утепление наружных стен, штукатурка.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">6</span>
+                <h4>Сдача и ввод</h4>
+                <p>Проверка геометрии, демонтаж опалубки, резка швов, сдача эксперту БТИ.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="section-light">
+    <div class="container">
+        <h2>Наши проекты</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://0llvgb6m.tinifycdn.com/uploads/msk/flats/3716/kvartry-v-mikrorajon-severnyj-1540823547.8887_.jpg" alt="ЖК «Северный»" style="width:100%; height:auto;">
+                <div class="portfolio-info">
+                    <h4>ЖК «Северный»</h4>
+                    <p>Москва, 2023 год — Монолитный жилой дом, 12 этажей, 3 подъезда, 1 300 м³ бетона.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-o/10/56/4e/84/caption.jpg" alt="ТЦ «Атриум»" style="width:100%; height:auto;">
+                <div class="portfolio-info">
+                    <h4>ТЦ «Атриум»</h4>
+                    <p>Подмосковье, 2022 год — Монолитное перекрытие 5 000 м², срок работ — 2 месяца.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.cdn-cian.ru/images/89/396/141/1416939877-6.jpg" alt="Офисный центр «Бизнес Парк»" style="width:100%; height:auto;">
+                <div class="portfolio-info">
+                    <h4>Офисный центр «Бизнес Парк»</h4>
+                    <p>Москва, 2021 год — Перекрытия и стены, 8 000 м², строительство по BIM-модели.</p>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-accent">Смотреть все проекты</a>
+    </div>
+</section>
+
+<section id="testimonials" class="section-white">
+    <div class="container">
+        <h2>Отзывы клиентов</h2>
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <p>«Компания «МонолитПроект» выполнила наш проект торгово-офисного комплекса в кратчайшие сроки. Все этапы работ были под контролем менеджеров, качество бетона — стабильное, бригада работала без нареканий.»</p>
+                <h4>— ООО «Московский Девелопмент», Дмитрий Иванов</h4>
+            </div>
+            <div class="testimonial">
+                <p>«Благодарны за профессионализм! Фундамент был залит аккуратно, без простоев, бетономешалки приезжали своевременно. Особо хочется отметить грамотную организацию работ в зимний период.»</p>
+                <h4>— ИП Петров, частный застройщик</h4>
+            </div>
+            <div class="testimonial">
+                <p>«Заказали у «МонолитПроекта» монолитное перекрытие для складского корпуса. Цена-качество на высоком уровне, придраться не к чему. Будем рекомендовать партнёрам.»</p>
+                <h4>— ООО «ЛогистикСервис»</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="vacancies" class="section-light">
+    <div class="container">
+        <h2>Мы ищем сотрудников</h2>
+        <p>В связи с расширением проектов открыты вакансии:</p>
+        <ul class="vacancy-list">
+            <li>Монтажник опалубки</li>
+            <li>Армировщик</li>
+            <li>Бетонщик (спецтехника)</li>
+            <li>Инженер-проектировщик (BIM-моделирование)</li>
+        </ul>
+        <p>Условия:</p>
+        <ul class="vacancy-conditions">
+            <li>Официальное трудоустройство (ТК РФ)</li>
+            <li>З/п от 80 000 ₽ (для спецтехники — по договорённости)</li>
+            <li>Корпоративное обучение и проживание при необходимости</li>
+            <li>Работа в Москве и МО (собственный трансфер для командированных)</li>
+        </ul>
+        <form id="vacancy-form" class="form-vacancy" onsubmit="submitForm(event)">
+            <div class="form-row">
+                <input type="text" name="fio" placeholder="ФИО" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+            </div>
+            <div class="form-row">
+                <input type="email" name="email" placeholder="Email" required>
+                <select name="position" required>
+                    <option value="">Выберите позицию</option>
+                    <option value="Монтажник опалубки">Монтажник опалубки</option>
+                    <option value="Армировщик">Армировщик</option>
+                    <option value="Бетонщик">Бетонщик (спецтехника)</option>
+                    <option value="Инженер-проектировщик">Инженер-проектировщик (BIM)</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <textarea name="experience" placeholder="Кратко об опыте" rows="2"></textarea>
+            </div>
+            <div class="form-row">
+                <label for="resume">Загрузите резюме (PDF, DOC):</label>
+                <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx">
+            </div>
+            <button type="submit" class="btn btn-accent">Отправить резюме</button>
+            <p class="form-note">Мы свяжемся с вами в течение 24 часов.</p>
+        </form>
+    </div>
+</section>
+
+<section id="contact" class="section-white">
+    <div class="container">
+        <h2>Контакты</h2>
+        <div class="contacts-grid">
+            <div class="contact-item">
+                <h4>Адрес офиса</h4>
+                <p>Москва, ул. Промзонная, д. 8, офис 12 (м. «Печатники»)</p>
+                <a href="https://yandex.ru/maps/?text=Москва,+ул.+Промзонная,+8" target="_blank">Посмотреть на карте</a>
+            </div>
+            <div class="contact-item">
+                <h4>Телефон</h4>
+                <a href="tel:+79297772204">+7 (929) 777-22-04</a>
+                <div class="messengers">
+                    <a href="https://wa.me/79297772204" target="_blank">WhatsApp</a>
+                    <a href="https://t.me/AKE_19" target="_blank">Telegram</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <h4>Email</h4>
+                <a href="mailto:ruha.sar@mail.ru">ruha.sar@mail.ru</a>
+            </div>
+            <div class="contact-item">
+                <h4>Реквизиты</h4>
+                <p>ООО «МонолитПроект»<br>
+                ИНН 7701234567, КПП 770101001<br>
+                ОГРН 1097746001234<br>
+                Банк «Банк Москва»<br>
+                р/с 40702810900000000001<br>
+                БИК 044525225, к/с 30101810200000000225</p>
+            </div>
+        </div>
+        <div class="contact-map">
+            <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3AXXXXXXXXXXXXXX&amp;source=constructor"
+                width="100%" height="400" frameborder="0">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-left">
+            <p>© 2010–2025 ООО «МонолитПроект». Все права защищены.</p>
+            <nav class="footer-nav">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Пользовательское соглашение</a>
+                <a href="#">Условия оплаты и доставки</a>
+            </nav>
+        </div>
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="https://vk.com/monolitproekt" target="_blank">VK</a>
+                <a href="https://t.me/AKE_19" target="_blank">Telegram</a>
+                <a href="https://instagram.com/monolit_proект" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+    var form = document.getElementById('vacancy-form');
+    var fio = form.elements['fio'].value;
+    var phone = form.elements['phone'].value;
+    var email = form.elements['email'].value;
+    var position = form.elements['position'].value;
+    var experience = form.elements['experience'].value;
+    // Construct mailto link without attachment (attachment not supported)
+    var subject = encodeURIComponent('Резюме: ' + fio);
+    var body = encodeURIComponent(
+      'ФИО: ' + fio + '\n' +
+      'Телефон: ' + phone + '\n' +
+      'Email: ' + email + '\n' +
+      'Позиция: ' + position + '\n' +
+      'Опыт: ' + experience + '\n' +
+      'Просьба найти прикрепленный файл резюме.'
+    );
+    var mailtoLink = 'mailto:ruha.sar@mail.ru?subject=' + subject + '&body=' + body;
+    window.location.href = mailtoLink;
+    alert('Мы свяжемся с вами в течение 24 часов, а также вы можете самостоятельно связаться с нами по ' +
+          '<a href=\"https://wa.me/79297772204\" target=\"_blank\">WhatsApp</a> ' +
+          'и <a href=\"https://t.me/AKE_19\" target=\"_blank\">Telegram</a>');
+    return false;
+  }
+</script>
+
+</body>
+</html>
